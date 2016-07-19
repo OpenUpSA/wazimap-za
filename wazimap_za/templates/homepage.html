@@ -1,5 +1,13 @@
 {% extends 'homepage.html' %}{% load staticfiles %}
 
+{% block homepage_detail %}
+  {% if WAZIMAP.default_profile == 'youth' %}
+    {% include 'homepage_youth.html' %}
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
 {% block homepage_javascripb_libs %}
 {{ block.super }}
 <script src="{% static 'js/maps_mapit.js' %}"></script>

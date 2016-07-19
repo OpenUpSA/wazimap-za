@@ -1,5 +1,5 @@
 from wazimap.data.tables import get_datatable
-from wazimap.data.utils import get_session, merge_dicts, get_stat_data
+from wazimap.data.utils import get_session, merge_dicts, get_stat_data, percent
 from wazimap.geo import geo_data
 
 
@@ -39,21 +39,37 @@ def get_profile(geo_code, geo_level, profile_name=None):
 
 def get_demographics_profile(geo_code, geo_level, session):
     # population group
-    pop_dist_data, total_pop = get_stat_data(
+    pop_dist_data, pop_total = get_stat_data(
             ['population group'], geo_level, geo_code, session)
+
+    youth_pop_dist_data, youth_pop_total = get_stat_data(['age in completed years'], geo_level, geo_code, session, table_name='youth_gender_age_in_completed_years')
+
+    youth_gender_data, _ = get_stat_data(['gender'], geo_level, geo_code, session, table_name='youth_gender_population_group')
+    youth_pop_group_data, _ = get_stat_data(['population group'], geo_level, geo_code, session, table_name='youth_gender_population_group')
 
     final_data = {
         'total_population': {
             "name": "People",
-            "values": {"this": total_pop}
+            "values": {"this": pop_total}
         },
+        'youth_population_total': {
+            "name": "Youth aged 15-24",
+            "values": {"this": youth_pop_total}
+        },
+        'youth_population_perc': {
+            "name": "Of population are youth aged 15-24",
+            "values": {"this": percent(youth_pop_total, pop_total)},
+        },
+        'youth_population_by_year': youth_pop_dist_data,
+        'youth_population_by_gender': youth_gender_data,
+        'youth_population_by_pop_group': youth_pop_group_data
     }
 
     geo = geo_data.get_geography(geo_code, geo_level)
     if geo.square_kms:
         final_data['population_density'] = {
             'name': "people per square kilometre",
-            'values': {"this": total_pop / geo.square_kms}
+            'values': {"this": pop_total / geo.square_kms}
         }
 
     return final_data

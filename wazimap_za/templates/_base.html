@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block header_branding %}
+  {% if WAZIMAP.default_profile == 'youth' %}
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block footer_content %}
+  {% if WAZIMAP.default_profile == 'youth' %}
+    {% include 'footer_youth.html' %}
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}

@@ -52,6 +52,27 @@ elif wazi_profile == 'ecd':
     WAZIMAP['ga_tracking_id'] = 'UA-48399585-32'
     WAZIMAP['name'] = 'Wazimap ECD'
 
+elif wazi_profile == 'youth':
+    WAZIMAP['comparative_levels'] = ['district', 'province']
+    WAZIMAP['levels'] = {
+        'province': {
+            'children': ['district', 'municipality', 'ward'],
+        },
+        'district': {
+            'children': ['municipality', 'ward'],
+        },
+        'municipality': {
+            'plural': 'municipalities',
+            'children': ['ward'],
+        },
+        'ward': {
+            'children': [],
+        }
+    }
+    WAZIMAP['url'] = 'https://wazimap-youth.code4sa.org'
+    WAZIMAP['name'] = 'Western Cape Youth Explorer'
+
+
 LANGUAGE_CODE = 'en-za'
 USE_THOUSAND_SEPARATOR = True
 FORMAT_MODULE_PATH = 'wazimap_za.formats'

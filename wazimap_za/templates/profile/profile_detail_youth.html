@@ -18,17 +18,22 @@
 
 <article id="youth" class="clearfix">
     <header class="section-contents">
-        <h1>Youth</h1>
+        <h1>Demographics</h1>
     </header>
     <div class="section-container">
         <section class="clearfix stat-row">
             <h2 class="header-for-columns"><a class="permalink" href="#population" id="population">Population<i class="fa fa-link"></i></a></h2>
-            <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=depravation.youth_pop stat_type='number' %}
+            <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=demographics.youth_population_total stat_type='number' %}
             </div>
-            <div class="column-third">
-                {% include 'profile/_blocks/_stat_list.html' with stat=depravation.youth_prop stat_type='percentage' %}
+            <div class="column-quarter">
+                {% include 'profile/_blocks/_stat_list.html' with stat=demographics.youth_population_perc stat_type='percentage' %}
             </div>
+            <div class="column-half" id="chart-histogram-demographics-youth_population_by_year" data-stat-type="scaled-percentage" data-chart-title="Youth population by age"></div>
+        </section>
+        <section class="clearfix stat-row">
+            <div class="column-half" id="chart-histogram-demographics-youth_population_by_pop_group" data-stat-type="scaled-percentage" data-chart-title="Youth population by race"></div>
+            <div class="column-half" id="chart-pie-demographics-youth_population_by_gender" data-stat-type="percentage" data-chart-title="Youth population by gender"></div>
         </section>
         <section class="clearfix stat-row">
             <aside>
