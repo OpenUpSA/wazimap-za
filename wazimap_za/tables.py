@@ -184,14 +184,6 @@ elif settings.WAZIMAP['default_profile'] == 'youth':
 
     # Simple Tables
     SimpleTable(
-        id='youth',
-        universe='Youth',
-        total_column=None,
-        description='Youth statistics',
-        dataset='Census 2011',
-        year='2011'
-    )
-    SimpleTable(
         id='youth_population',
         universe='Youth',
         total_column='total_pop',
