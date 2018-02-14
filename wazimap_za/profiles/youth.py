@@ -851,6 +851,8 @@ def get_health_profile(geo, session, display_profile, comparative=False):
         table_dataset='Census and Community Survey',
         key_order=GIVEN_BIRTH_KEY_ORDER)
 
+    youth_female_given_birth['Unspecified']['name'] = 'Unspecified *'
+
     youth_female_given_birth_by_age_group, _ = get_stat_data(
         ['given birth', 'age in completed years'], geo, session,
         table_universe='Female youth',
@@ -875,41 +877,40 @@ def get_health_profile(geo, session, display_profile, comparative=False):
 
     if display_profile == 'WC' and geo.geo_level != 'ward':
         # We don't have data on ward level for the following
-        with dataset_context(year='2015'):
-            youth_pregnancy_rate_by_year, _ = get_stat_data(
-                ['year'], geo, session,
-                table_universe='Teenage pregnancy rate by year',
-                table_dataset='Department of Health Administrative data',
-                percent=False)
+        youth_pregnancy_rate_by_year, _ = get_stat_data(
+            ['year'], geo, session,
+            table_universe='Teenage pregnancy rate by year',
+            table_dataset='Department of Health Administrative data',
+            percent=False)
 
-            youth_delivery_rate_by_year, _ = get_stat_data(
-                ['year'], geo, session,
-                table_universe='Teenage delivery rate by year',
-                table_dataset='Department of Health Administrative data',
-                percent=False)
+        youth_delivery_rate_by_year, _ = get_stat_data(
+            ['year'], geo, session,
+            table_universe='Teenage delivery rate by year',
+            table_dataset='Department of Health Administrative data',
+            percent=False)
 
-        with dataset_context(year='2013'):
-            youth_female_causes_of_death_perc, _ = get_stat_data(
-                ['cause of death'], geo, session,
-                table_universe='Female youth causes of death',
-                table_dataset='Department of Health Administrative data',
-                order_by='-total')
-            youth_male_causes_of_death_perc, _ = get_stat_data(
-                ['cause of death'], geo, session,
-                table_universe='Male youth causes of death',
-                table_dataset='Department of Health Administrative data',
-                order_by='-total')
+        youth_female_causes_of_death_perc, _ = get_stat_data(
+            ['cause of death'], geo, session,
+            table_universe='Female youth causes of death',
+            table_dataset='Department of Health Administrative data',
+            order_by='-total')
 
-            youth_female_causes_of_death, _ = get_stat_data(
-                ['cause of death'], geo, session,
-                table_universe='Female youth causes of death',
-                table_dataset='Department of Health Administrative data',
-                order_by='-total')
-            youth_male_causes_of_death, _ = get_stat_data(
-                ['cause of death'], geo, session,
-                table_universe='Male youth causes of death',
-                table_dataset='Department of Health Administrative data',
-                order_by='-total')
+        youth_male_causes_of_death_perc, _ = get_stat_data(
+            ['cause of death'], geo, session,
+            table_universe='Male youth causes of death',
+            table_dataset='Department of Health Administrative data',
+            order_by='-total')
+
+        youth_female_causes_of_death, _ = get_stat_data(
+            ['cause of death'], geo, session,
+            table_universe='Female youth causes of death',
+            table_dataset='Department of Health Administrative data',
+            order_by='-total')
+        youth_male_causes_of_death, _ = get_stat_data(
+            ['cause of death'], geo, session,
+            table_universe='Male youth causes of death',
+            table_dataset='Department of Health Administrative data',
+            order_by='-total')
 
         if not comparative:
             youth_female_top10_causes_of_death = OrderedDict()
