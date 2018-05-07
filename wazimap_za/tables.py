@@ -142,7 +142,7 @@ if settings.WAZIMAP['default_profile'] == 'census':
 # Youth
 elif settings.WAZIMAP['default_profile'] == 'youth':
     # Demographics
-    FieldTable([ 'gender', 'population group'], id='youth_gender_population_group', universe='Youth', year='2011')
+    FieldTable(['gender', 'population group'], id='youth_gender_population_group', universe='Youth', year='2011')
     FieldTable(['population group', 'gender'], id='youth_population_group_gender', universe='Youth', year='2011', db_table='youth_gender_population_group')
     FieldTable(['age groups in 10 years'], id='youth_age_groups_in_10_years', universe='Population', year='2011')
     FieldTable(['language'], id='youth_language', universe='Youth', year='2011')

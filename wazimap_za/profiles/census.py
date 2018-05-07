@@ -6,7 +6,7 @@ from wazimap.data.tables import get_datatable, get_table_id
 from wazimap.data.utils import get_session, add_metadata
 from wazimap.geo import geo_data
 
-from wazimap.data.utils import (collapse_categories, calculate_median, calculate_median_stat, merge_dicts, group_remainder, get_stat_data, percent, current_context, dataset_context)
+from wazimap.data.utils import (collapse_categories, calculate_median, calculate_median_stat, merge_dicts, group_remainder, get_stat_data, percent, current_context, dataset_context, get_pointtable)
 
 from .elections import get_elections_profile
 
@@ -465,7 +465,6 @@ ELECTRICITY_ACCESS_RECODE = {
 
 def get_profile(geo, profile_name, request):
     session = get_session()
-
     try:
         comparative_geos = geo_data.get_comparative_geos(geo)
         data = {}
@@ -510,6 +509,7 @@ def get_profile(geo, profile_name, request):
         group_remainder(data['service_delivery']['electricity_access'], 5)
 
     data['elections'] = get_elections_profile(geo)
+    data['point_data'] = get_point_data(geo, session)
 
     return data
 
@@ -1273,3 +1273,15 @@ def get_crime_profile(geo, session):
             'metadata': child_crime['metadata']
         },
     }
+
+
+def get_point_data(geo, session):
+    table = get_pointtable('libraries')
+    with dataset_context(year='2016'):
+        libraries = table.get_point_data(geo, session)
+    
+    point_data = {
+        'libraries': libraries    
+    }
+    
+    return point_data
