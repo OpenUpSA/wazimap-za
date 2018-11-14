@@ -6,29 +6,33 @@ The South African instance of [Wazimap](https://github.com/Code4SA/wazimap), a D
 
 # Local development
 
-1. clone the repo
+1. Clone the repo
 2. ``cd wazimap_za``
 3. ``virtualenv --no-site-packages env``
 4. ``source env/bin/activate``
 5. ``pip install -r requirements.txt``
+6. Install gdal
+7. Lookup gdal version with `gdal-config --version` and install matching version of `pygdal`. See details at https://stackoverflow.com/a/38603825/1477280
 
 Set the `WAZI_PROFILE` environment variable to the instance you are working on, e.g.
-`export WAZI_PROFILE=ecd`
+`export WAZI_PROFILE=census`
 
 Set the `DEFAULT_GEO_VERSION` environment variable if you don't want to default to the latest, e.g. for youth and ecd
 `export DEFAULT_GEO_VERSION=2011`
 
 You will need a Postgres database for the instance you are running:
 ```
-psql
-create user wazimap_<instance_name> with password wazimap_<instance_name>;
-create database wazimap_<instance_name>;
-grant all privileges on database wazimap_<instance_name> to wazimap_<instance_name>;
+ROLE_NAME=wazimap_${WAZIPROFILE:-census}
+PASSWORD=$ROLE_NAME
+DB_NAME=$ROLE_NAME
+psql -c "CREATE ROLE $ROLE_NAME WITH LOGIN PASSWORD '$PASSWORD'"
+psql -c "CREATE DATABASE $DB_NAME"
+psql -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $ROLE_NAME"
 ```
 
 Import the data into the new database.
 ```
-cat sql/*.sql | psql -U wazimap_<instance_name> -W wazimap_<instance_name>
+cat sql/${WAZIPROFILE:-census}/*.sql | psql -U $ROLE_NAME -W $DB_NAME
 ```
 
 Run migrations to keep Django happy:
@@ -38,7 +42,7 @@ python manage.py migrate
 
 Import the fixtures for the django models:
 ```
-python manage.py loaddata fixtures/<instance_name>/wazimap_django_models.json
+python manage.py loaddata fixtures/${WAZI_PROFILE:-census}/wazimap_django_models.json
 ```
 
 Create an admin user:
@@ -55,7 +59,7 @@ python manage.py runserver
 
 Be sure to dump the data to the appropriate fixture when making changes to django models data:
 ```
-python manage.py dumpdata wazimap > fixtures/<instance_name>/wazimap_django_models.json
+python manage.py dumpdata wazimap > fixtures/${WAZI_PROFILE:-census}/wazimap_django_models.json
 ```
 
 
@@ -123,4 +127,3 @@ done
 # License
 
 MIT License
-
