@@ -26,7 +26,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("table_name")
     parser.add_argument("metric_column_name")
-    parser.add_argument('-c', '--connection-string', default='')
+    parser.add_argument(
+        '-c', '--connection-string', default='',
+        help='Connection string, like postgresql://user:secret@localhost/db_name')
     args = parser.parse_args()
     create_table(
         args.table_name, args.metric_column_name, args.connection_string)

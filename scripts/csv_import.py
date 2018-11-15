@@ -40,7 +40,9 @@ if __name__ == '__main__':
     parser.add_argument(
         '-g', '--geo-version', default='2011',
         help='Geo version, by default=2011')
-    parser.add_argument('-c', '--connection-string', default='')
+    parser.add_argument(
+        '-c', '--connection-string', default='',
+        help='Connection string, like postgresql://user:secret@localhost/db_name')
     args = parser.parse_args()
     csv_to_table(
         args.file_path, args.table_name, args.metric_column_name,
