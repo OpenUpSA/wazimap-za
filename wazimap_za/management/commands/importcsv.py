@@ -21,6 +21,8 @@ tables as necessary.
 """
 
 muni_re = re.compile('^[A-Z]{2,3}\d{0,3}\s*:\s.*$')
+# 270403001 Gobisandla SP
+subplace_re = re.compile('^\d{9}\s+')
 
 
 class Command(BaseCommand):
@@ -313,19 +315,27 @@ class Command(BaseCommand):
 
         level = None
         if ':' in geo_name:
+            # DC10: Sarah Baartman
             pre, code = geo_name.split(':', 1)
             pre = pre.strip(); code = code.strip()
         else:
             pre = code = geo_name
 
         if 'Ward' in geo_name:
+            # 21009001 Ward 1
             level = 'ward'
             code = pre
         elif geo_name.startswith('DC'):
+            # DC10: Sarah Baartman
             level = 'district'
             code = pre.strip()
         elif muni_re.match(geo_name):
+            # CPT: City of Cape Town
+            # EC109: Kou-Kamma
             level = 'municipality'
+            code = pre
+        elif subplace_re.match(geo_name):
+            level = 'subplace'
             code = pre
 
         else:
