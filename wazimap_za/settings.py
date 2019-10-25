@@ -47,7 +47,7 @@ WAZIMAP['levels'] = {
 }
 
 WAZIMAP['profile_builder'] = 'wazimap_za.profiles.youth.get_profile'
-WAZIMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', None)
+WAZIMAP['default_geo_version'] = os.environ.get('DEFAULT_GEO_VERSION', '2011')
 WAZIMAP['legacy_embed_geo_version'] = '2011'
 WAZIMAP['primary_release_year'] = {
     # use the 2011 release for wards, use the latest (2016) for everything else
