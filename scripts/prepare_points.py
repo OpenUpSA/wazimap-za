@@ -1,8 +1,7 @@
 import pandas
 import requests
 import argparse
-​
-​
+import os
 parser = argparse.ArgumentParser(
     description="script to find the geographical levels of a point"
 )
@@ -47,6 +46,7 @@ for i, series in dataframe.iterrows():
                 dataframe.at[i, "Ward"] = mdb_code
 
 
-filename = f"geocoded_{args.file}"
-dataframe.to_csv(filename)
+filename = f"geocoded_{os.path.basename(args.file)}"
+with open(filename, "w") as fp:
+    dataframe.to_csv(fp)
 
