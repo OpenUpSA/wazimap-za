@@ -3,7 +3,6 @@ django-test-without-migrations==0.4
 gevent==1.2.2
 greenlet==0.4.13
 gunicorn==19.7.1
-newrelic==2.40.0.34
 git+https://github.com/OpenUpSA/wazimap.git@py2-releases#egg=wazimap[gdal]
 #wazimap[gdal]==1.1.1
 GDAL==1.11.0
