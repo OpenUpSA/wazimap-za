@@ -1,4 +1,4 @@
-Django==1.9.2
+Django==1.11.27
 django-test-without-migrations==0.4
 gevent==1.2.2
 greenlet==0.4.13
