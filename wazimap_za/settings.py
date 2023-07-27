@@ -63,7 +63,7 @@ WAZIMAP['available_release_years'] = {
 
 if wazi_profile == 'census':
     DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://wazimap_census:wazimap_census@localhost/wazimap_census')
-    WAZIMAP['ga_tracking_id'] = 'UA-48399585-5'
+    WAZIMAP['ga_tracking_id'] = 'G-9P9RRPEZFK'
 
     WAZIMAP['video_links'] = OrderedDict([
         ('intro', 'https://www.youtube.com/embed/lXKDBoRSqxo?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH'),
@@ -77,14 +77,13 @@ elif wazi_profile == 'ecd':
     DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://wazimap_ecd:wazimap_ecd@localhost/wazimap_ecd')
     WAZIMAP['url'] = 'https://wazimap-ecd.code4sa.org'
     WAZIMAP['na_label'] = 'No Data'
-    WAZIMAP['ga_tracking_id'] = 'UA-48399585-32'
     WAZIMAP['name'] = 'Wazimap ECD'
 
 elif wazi_profile == 'youth':
     DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://wazimap_youth:wazimap_youth@localhost/wazimap_youth')
     WAZIMAP['url'] = 'https://youthexplorer.org.za'
     WAZIMAP['name'] = 'Youth Explorer'
-    WAZIMAP['ga_tracking_id'] = 'UA-48399585-46'
+    WAZIMAP['ga_tracking_id'] = 'G-22426P1LMH'
     WAZIMAP['twitter'] = None
 
     WAZIMAP['video_links'] = OrderedDict([
