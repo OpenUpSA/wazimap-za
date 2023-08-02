@@ -41,7 +41,7 @@ def convert_file(args):
                 #     if 'error' in resp.json().keys():
                 #         print "Error: " + ward_id
                 #     else:
-                #         for geo_level in resp.json().itervalues():
+                #         for geo_level in resp.json().values():
                 #             geo_codes[ward_id].append({
                 #                 "geo_level": geo_level['type_name'].lower(),
                 #                 "geo_code": geo_level['codes']['MDB']

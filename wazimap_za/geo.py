@@ -65,7 +65,7 @@ class GeoData(BaseGeoData):
         resp.raise_for_status()
 
         geos = []
-        for feature in resp.json().itervalues():
+        for feature in resp.json().values():
             try:
                 geo = self.get_geography(feature['codes']['MDB'],
                                          feature['type_name'].lower(),
