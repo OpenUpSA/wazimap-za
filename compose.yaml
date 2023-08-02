@@ -3,13 +3,15 @@ services:
     build:
       context: .
     ports:
-      - 8000:8000
+      - 8234:5000
     environment:
       - DATABASE_URL=postgresql://wazimap:wazimap@db/wazimap
     depends_on:
       db:
         condition: service_healthy
-    command: ["./manage.py", "runserver"]
+    command: python manage.py runserver 0.0.0.0:5000
+    env_file:
+      - .env
   db:
     image: postgres:11.6
     environment:
