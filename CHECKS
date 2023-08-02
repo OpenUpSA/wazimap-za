@@ -1,4 +1,4 @@
-#WAIT=10
-#ATTEMPTS=5
+WAIT=10
+ATTEMPTS=5
 
-#/profiles/province-WC-western-cape/ Population
+/profiles/province-WC-western-cape/ Population
