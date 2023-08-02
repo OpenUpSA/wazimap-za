@@ -1,4 +1,4 @@
-FROM python:3.7.17-slim
+FROM python:3.7.17-slim-bullseye
 
 ENV PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
