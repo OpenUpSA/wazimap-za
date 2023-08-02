@@ -5,8 +5,11 @@ from wazimap.data.tables import FieldTable, SimpleTable
 
 # All profiles
 
+if settings.WAZIMAP['default_profile'] == 'setup':
+    pass
+
 # Census tables
-if settings.WAZIMAP['default_profile'] == 'census':
+elif settings.WAZIMAP['default_profile'] == 'census':
     FieldTable(['age groups in 5 years'])
     FieldTable(['age in completed years'], id='ageincompletedyears')
     FieldTable(['electricity for cooking', 'electricity for heating', 'electricity for lighting'])
