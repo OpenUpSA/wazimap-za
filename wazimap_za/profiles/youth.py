@@ -633,7 +633,7 @@ def get_living_environment_profile(geo, session, display_profile, comparative=Fa
     living_with_parent_keys = ('Both parents', 'Mother only', 'Father only')
     living_with_parents_stat = sum(
         v['values']['this'] or 0
-        for k, v in youth_by_living_with_parents_status.iteritems()
+        for k, v in youth_by_living_with_parents_status.items()
         if k in living_with_parent_keys)
 
     final_data.update({

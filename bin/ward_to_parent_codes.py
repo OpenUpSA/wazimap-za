@@ -82,7 +82,7 @@ def convert_file(args):
 
                 print "No data: " + str([ward for ward in no_mapit_data])
 
-                for geo_values, total in parent_levels.iteritems():
+                for geo_values, total in parent_levels.items():
                     data = {
                         "geo_level": geo_values[0],
                         "geo_code": geo_values[1],
