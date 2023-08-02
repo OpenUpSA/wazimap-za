@@ -525,7 +525,7 @@ def get_demographics_profile(geo, session):
             ['language'], geo, session,
             table_dataset='Census and Community Survey',
             order_by='-total')
-    language_most_spoken = language_data[language_data.keys()[0]]
+    language_most_spoken = language_data[list(language_data.keys())[0]]
 
     # age groups
     age_dist_data, total_age = get_stat_data(
