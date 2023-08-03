@@ -18,7 +18,6 @@ RUN set -ex \
 WORKDIR /app
 
 RUN pip install GDAL==$(gdal-config --version)
-RUN pip install git+https://github.com/OpenUpSA/wazimap.git@py2-releases#egg=wazimap[gdal]
 COPY requirements.txt .
 RUN pip install --upgrade pip \
     pip install -r requirements.txt

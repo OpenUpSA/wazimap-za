@@ -8,12 +8,15 @@ services:
       - 8000:5000
     environment:
       - DATABASE_URL=postgresql://wazimap:wazimap@db/wazimap
+      - DJANGO_DEBUG=True
+      - DJANGO_SETTINGS_MODULE=wazimap_za.settings
+      - DJANGO_SECRET_KEY=a-dev-secret-key-not-secret
+      - WAZI_PROFILE=census
+      - GOOGLE_GEOCODE_API_KEY=get-real-key-from-google
     depends_on:
       db:
         condition: service_healthy
     command: ./dev.sh
-    env_file:
-      - .env
   db:
     image: postgres:11.6
     environment:

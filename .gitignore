@@ -4,5 +4,5 @@ node_modules/
 .idea/
 debug
 .vagrant
-/static/
+**/static/
 .env
