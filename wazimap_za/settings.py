@@ -73,12 +73,6 @@ if wazi_profile == 'census':
         ("comparing_places", 'https://www.youtube.com/embed/7mSZnXFHFxo?list=PL7MJ_sFHs952CYcKHPQp786HVVy83nBwH')
     ])
 
-elif wazi_profile == 'ecd':
-    DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://wazimap_ecd:wazimap_ecd@localhost/wazimap_ecd')
-    WAZIMAP['url'] = 'https://wazimap-ecd.code4sa.org'
-    WAZIMAP['na_label'] = 'No Data'
-    WAZIMAP['name'] = 'Wazimap ECD'
-
 elif wazi_profile == 'youth':
     DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://wazimap_youth:wazimap_youth@localhost/wazimap_youth')
     WAZIMAP['url'] = 'https://youthexplorer.org.za'

@@ -6,3 +6,4 @@ debug
 .vagrant
 **/static/
 .env
+/static/

@@ -22,9 +22,9 @@ Note: This project is no longer being supported by OpenUp. We are building a mor
 5. ``pip install -r requirements.txt``
 
 Set the `WAZI_PROFILE` environment variable to the instance you are working on, e.g.
-`export WAZI_PROFILE=ecd`
+`export WAZI_PROFILE=census`
 
-Set the `DEFAULT_GEO_VERSION` environment variable if you don't want to default to the latest, e.g. for youth and ecd
+Set the `DEFAULT_GEO_VERSION` environment variable if you don't want to default to the latest, e.g. for youth
 `export DEFAULT_GEO_VERSION=2011`
 
 You will need a Postgres database for the instance you are running:
