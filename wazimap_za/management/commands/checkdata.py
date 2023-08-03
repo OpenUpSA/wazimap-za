@@ -117,7 +117,7 @@ class Command(BaseCommand):
             self.field_tables = {t.name.lower(): t for t in FieldTable.objects.all()}
             self.simple_tables = {t.name.lower(): t for t in SimpleTable.objects.all()}
 
-        for table_id, data_table in self.field_tables.iteritems():
+        for table_id, data_table in self.field_tables.items():
             fields = data_table.fields
             for release in data_table.releases():
                 db_table = data_table.get_db_table(release=release)
@@ -147,7 +147,7 @@ class Command(BaseCommand):
 
 
         # Simple Tables
-        for table_id, data_table in self.simple_tables.iteritems():
+        for table_id, data_table in self.simple_tables.items():
             self.stdout.write("Checking table: %s" % (data_table.name))
             for release in data_table.releases():
                 db_table = data_table.get_db_table(release=release)
@@ -201,7 +201,7 @@ class Command(BaseCommand):
                 [row.__getattribute__(field) for field in fields])
 
         missing_keys_by_geo = {}
-        for geo_id, geo_keys in keys_by_geo.iteritems():
+        for geo_id, geo_keys in keys_by_geo.items():
             if len(geo_keys) != len(key_combos):
                 missing_keys_by_geo[geo_id] = [
                     x for x in key_combos if x not in geo_keys]
@@ -226,7 +226,7 @@ class Command(BaseCommand):
     def store_missing_keys(self, db_table, fields, missing_keys):
         count = 0
         self.stdout.write("Storing missing keys for : %s" % (db_table.name))
-        for geo, keys in missing_keys.iteritems():
+        for geo, keys in missing_keys.items():
             for key_values in keys:
                 count += 1
                 geo_level, geo_code = geo.split('-')

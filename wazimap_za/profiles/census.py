@@ -525,7 +525,7 @@ def get_demographics_profile(geo, session):
             ['language'], geo, session,
             table_dataset='Census and Community Survey',
             order_by='-total')
-    language_most_spoken = language_data[language_data.keys()[0]]
+    language_most_spoken = language_data[list(language_data.keys())[0]]
 
     # age groups
     age_dist_data, total_age = get_stat_data(
@@ -661,7 +661,7 @@ def get_households_profile(geo, session):
             recode=HOUSEHOLD_OWNERSHIP_RECODE,
             order_by='-total')
     owned = 0
-    for key, data in tenure_data.iteritems():
+    for key, data in tenure_data.items():
         if key.startswith('Owned'):
             owned += data['numerators']['this']
 
@@ -868,7 +868,7 @@ def get_service_delivery_profile(geo, session):
         order_by='-total')
 
     total_ref_sp = 0.0
-    for k, v in refuse_disp_data.iteritems():
+    for k, v in refuse_disp_data.items():
         if k.startswith('Service provider'):
             total_ref_sp += v['numerators']['this']
 
@@ -944,7 +944,7 @@ def get_service_delivery_profile(geo, session):
 
     total_flush_toilet = 0.0
     total_no_toilet = 0.0
-    for key, data in toilet_data.iteritems():
+    for key, data in toilet_data.items():
         if key.startswith('Flush') or key.startswith('Chemical'):
             total_flush_toilet += data['numerators']['this']
         if key == 'None':
@@ -1121,7 +1121,7 @@ def get_children_profile(geo, session):
         exclude=['Not applicable']
     )
     total_in_labour_force = float(sum(v["numerators"]["this"] for k, v
-                                      in employment_dist.iteritems()
+                                      in employment_dist.items()
                                       if COLLAPSED_EMPLOYMENT_CATEGORIES.get(k, None)
                                       == 'In labour force'))
 

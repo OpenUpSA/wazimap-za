@@ -155,7 +155,7 @@ def get_demographics_profile(geo, session):
 
         ecd_pop_density = OrderedDict()
 
-        for k, age_group in ecd_age_groups.iteritems():
+        for k, age_group in ecd_age_groups.items():
             if k != 'metadata':
                 ecd_pop_density[age_group['name']] = {
                     "name": age_group['name'],
@@ -578,7 +578,7 @@ def get_service_delivery_profile(geo, session):
 
     total_flush_toilet = 0.0
     total_no_toilet = 0.0
-    for key, data in toilet_data.iteritems():
+    for key, data in toilet_data.items():
         if key.startswith('Flush') or key.startswith('Chemical'):
             total_flush_toilet += data['numerators']['this']
         if key == 'None':
