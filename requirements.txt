@@ -1,5 +1,5 @@
 django-test-without-migrations~=0.6
 gevent~=22.10.2
 gunicorn~=22.0.0
-django-appconf~=1.0.5
 git+https://github.com/OpenUpSA/wazimap.git@releases#egg=wazimap[gdal]
+django-appconf~=1.0.5
