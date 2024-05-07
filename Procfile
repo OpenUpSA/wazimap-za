@@ -1,1 +1,1 @@
-web: gunicorn wazimap_za.wsgi:application --log-level debug --log-file - --bind=0.0.0.0:5000
+web: gunicorn --worker-class gevent wazimap_za.wsgi:application -t 120 --log-level debug --log-file - --bind=0.0.0.0:5000
