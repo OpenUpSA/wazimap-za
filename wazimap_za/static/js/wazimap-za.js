@@ -1,1 +1,1 @@
-$(() => $('<div id="banner"><div class="wrapper">This version of Wazimap is no longer updated. Find the latest data at <a href="next.wazimap.co.za">next.wazimap.co.za</a>.</div></div>').appendTo('#page-header'));
+$(() => $('<div id="banner"><div class="wrapper">This version of Wazimap is no longer updated. Find the latest data at <a href="https://next.wazimap.co.za">next.wazimap.co.za</a>.</div></div>').appendTo('#page-header'));
