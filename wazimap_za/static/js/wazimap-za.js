@@ -1,5 +1,1 @@
-$(function() {
-  // add announcement banner
-  var banner = $('<div id="banner"><div class="wrapper">Wazimap now uses data from the Community Survey 2016 where possible.</div></div>');
-  $('#page-header').append(banner);
-});
+$(() => $('<div id="banner"><div class="wrapper">This version of Wazimap is no longer updated. Find the latest data at <a href="next.wazimap.co.za">next.wazimap.co.za</a>.</div></div>').appendTo('#page-header'));
