@@ -1,6 +1,6 @@
 $(() =>
   $(
-    '<div id="banner"><div class="wrapper">This version of Wazimap is no longer updated. Find the latest data at <a href="https://next.wazimap.co.za">next.wazimap.co.za</a>.</div></div>'
+    '<div id="banner"><div class="wrapper">This version of Wazimap is no longer updated. Find the latest data at <a href="https://next.wazimap.co.za?onboarding=tutorial">next.wazimap.co.za</a>.</div></div>'
   ).appendTo("#page-header")
 );
 $(() =>
@@ -14,7 +14,7 @@ $(() =>
             <div style="margin-top: 1em; margin-bottom: 2em;">
                 Wazimap is the most comprehensive source of local political and demographic data in South Africa, but this version is no longer updated. Visit the new Wazimap to see the latest data.
             </div>
-            <a onMouseOver="this.style.backgroundColor = '#f77d4e';" onMouseOut="this.style.backgroundColor = '#f55b2c';" style="color: #fff; display: block; float: right; background-color: #f55b2c; border-radius: 3px; font-size: 16px; font-weight: 500; padding: 10px 15px; text-decoration: none;" href="https://next.wazimap.co.za">Visit next.wazimap.co.za</a>
+            <a onMouseOver="this.style.backgroundColor = '#f77d4e';" onMouseOut="this.style.backgroundColor = '#f55b2c';" style="color: #fff; display: block; float: right; background-color: #f55b2c; border-radius: 3px; font-size: 16px; font-weight: 500; padding: 10px 15px; text-decoration: none;" href="https://next.wazimap.co.za?onboarding=tutorial">Visit next.wazimap.co.za</a>
         </div>
     </div>`
   ).appendTo("#page-header")
